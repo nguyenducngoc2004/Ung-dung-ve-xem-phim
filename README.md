@@ -5,7 +5,7 @@
 </h2>
 
 <h2 align="center">
-    UNG DUNG ĐAT VE XEM PHIM SU DUNG TCP
+    UNG DUNG ĐAT VE XEM PHIM
 </h2>
 
 <div align="center">
