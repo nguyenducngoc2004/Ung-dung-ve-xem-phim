@@ -82,22 +82,22 @@ tickets.txt - Lịch sử đặt vé
 
 3. Hình ảnh các chức năng
 🖼️ Giao diện đăng nhập
-<img width="975" height="714" alt="image" src="https://github.com/user-attachments/assets/99f8e1d6-33b1-4d9c-a517-63a56609cc0f" />
+<img width="972" height="715" alt="image" src="https://github.com/user-attachments/assets/ed9d41ad-c14a-4507-84d5-3dade89c1af6" />
 
 🎪 Trang chủ - Danh sách phim
-<img width="969" height="695" alt="image" src="https://github.com/user-attachments/assets/fe7b70f3-1bba-4a62-8f7e-676dbd5720bc" />
+<img width="963" height="724" alt="image" src="https://github.com/user-attachments/assets/0b87439d-bbe5-48fb-b27a-834f3d4427d2" />
 
 
 🎫 Đặt vé
+<img width="976" height="683" alt="image" src="https://github.com/user-attachments/assets/4b52bdb4-cd68-4871-ae07-def01e1504ec" />
 
-<img width="977" height="719" alt="image" src="https://github.com/user-attachments/assets/6aed67b9-3589-4306-8e88-be11b2f5cf65" />
 
 👤 Quản lý vé đã đặt
-<img width="954" height="708" alt="image" src="https://github.com/user-attachments/assets/a51d7803-b0c7-46d6-8d76-ddddda19ba56" />
+<img width="967" height="649" alt="image" src="https://github.com/user-attachments/assets/b0114ffb-733e-4dff-9bfd-6ada2945ff91" />
 
 
 🎬 Thêm phim mới (Admin)
-<img width="987" height="714" alt="image" src="https://github.com/user-attachments/assets/a116295c-269c-48ba-b75f-2a31d9b3d391" />
+<img width="959" height="695" alt="image" src="https://github.com/user-attachments/assets/a0eff6c1-13cb-4cb7-8426-6158c97cbb07" />
 
 4. Các bước cài đặt
 📋 Yêu cầu hệ thống
