@@ -81,6 +81,9 @@
    tickets.txt - Lịch sử đặt vé
 
 3. Hình ảnh các chức năng
+
+
+
    🖼️ Giao diện đăng nhập
    <img width="972" height="715" alt="image" src="https://github.com/user-attachments/assets/ed9d41ad-c14a-4507-84d5-3dade89c1af6" />
 
@@ -98,7 +101,7 @@
    🎬 Thêm phim mới (Admin)
    <img width="959" height="695" alt="image" src="https://github.com/user-attachments/assets/a0eff6c1-13cb-4cb7-8426-6158c97cbb07" />
 
-4. Các bước cài đặt
+5. Các bước cài đặt
    📋 Yêu cầu hệ thống
 
    Java JDK 8 hoặc cao hơn
@@ -151,7 +154,7 @@
 
 
 
-5. Thông tin liên hệ
+6. Thông tin liên hệ
    👨‍💻 Tác giả
    NGUYEN DUC NGOC
    🎓 Student of [DNU University]
