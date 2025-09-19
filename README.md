@@ -32,117 +32,112 @@
 
 
 1. Giới thiệu hệ thống
-Movie Ticket Booking System là hệ thống đặt vé xem phim trực tuyến được phát triển bằng Java, sử dụng mô hình client-server. Hệ thống cho phép người dùng xem danh sách phim, đặt vé, quản lý vé đã đặt, đồng thời cung cấp chức năng quản lý cho admin để thêm phim mới vào hệ thống.
+   Movie Ticket Booking System là hệ thống đặt vé xem phim trực tuyến được phát triển bằng Java, sử dụng mô hình client-server. Hệ thống cho phép người dùng xem danh sách phim, đặt vé, quản lý vé đã đặt, đồng thời cung cấp chức năng        quản lý cho admin để thêm phim mới vào hệ thống.
 
-Tính năng chính:
+   Tính năng chính:
 
-- Đăng ký/Đăng nhập tài khoản
+   - Đăng ký/Đăng nhập tài khoản
 
-- Xem danh sách phim với thông tin chi tiết
+   - Xem danh sách phim với thông tin chi tiết
 
-- Đặt vé và chọn chỗ ngồi
+   - Đặt vé và chọn chỗ ngồi
 
-- Xem lịch sử vé đã đặt
+   - Xem lịch sử vé đã đặt
 
-- Quản lý phim (cho admin)
+   - Quản lý phim (cho admin)
 
-- Lưu trữ dữ liệu trong file text
+   - Lưu trữ dữ liệu trong file text
 
-- Hỗ trợ đa người dùng
+   - Hỗ trợ đa người dùng
 
 2. Công nghệ sử dụng
-🛠️ Ngôn ngữ và Framework
-Java SE (Java Standard Edition)
+   🛠️ Ngôn ngữ và Framework
+   Java SE (Java Standard Edition)
 
-Java Swing (GUI)
+   Java Swing (GUI)
 
-Java Socket Programming (Network communication)
+   Java Socket Programming (Network communication)
 
-📊 Kiến trúc hệ thống
-Mô hình Client-Server
+   📊 Kiến trúc hệ thống
+   Mô hình Client-Server
 
-TCP/IP Protocol (Port 12345)
+   TCP/IP Protocol (Port 12345)
 
-Object Serialization cho truyền dữ liệu
+   Object Serialization cho truyền dữ liệu
 
-Multi-threading cho xử lý đa nhiệm
+   Multi-threading cho xử lý đa nhiệm
 
-💾 Lưu trữ dữ liệu
-File-based storage (Text files)
+   💾 Lưu trữ dữ liệu
+   File-based storage (Text files)
 
-CSV format cho dữ liệu
+   CSV format cho dữ liệu
 
-Thư mục data/ chứa:
+   Thư mục data/ chứa:
 
-users.txt - Tài khoản người dùng
+   users.txt - Tài khoản người dùng
 
-movies.txt - Thông tin phim
+   movies.txt - Thông tin phim
 
-tickets.txt - Lịch sử đặt vé
+   tickets.txt - Lịch sử đặt vé
 
 3. Hình ảnh các chức năng
-🖼️ Giao diện đăng nhập
-<img width="972" height="715" alt="image" src="https://github.com/user-attachments/assets/ed9d41ad-c14a-4507-84d5-3dade89c1af6" />
+   🖼️ Giao diện đăng nhập
+   <img width="972" height="715" alt="image" src="https://github.com/user-attachments/assets/ed9d41ad-c14a-4507-84d5-3dade89c1af6" />
 
-🎪 Trang chủ - Danh sách phim
-<img width="963" height="724" alt="image" src="https://github.com/user-attachments/assets/0b87439d-bbe5-48fb-b27a-834f3d4427d2" />
-
-
-🎫 Đặt vé
-<img width="976" height="683" alt="image" src="https://github.com/user-attachments/assets/4b52bdb4-cd68-4871-ae07-def01e1504ec" />
-
-
-👤 Quản lý vé đã đặt
-<img width="967" height="649" alt="image" src="https://github.com/user-attachments/assets/b0114ffb-733e-4dff-9bfd-6ada2945ff91" />
+   🎪 Trang chủ - Danh sách phim
+   <img width="963" height="724" alt="image" src="https://github.com/user-attachments/assets/0b87439d-bbe5-48fb-b27a-834f3d4427d2" />
+    
+   🎫 Đặt vé
+   <img width="976" height="683" alt="image" src="https://github.com/user-attachments/assets/4b52bdb4-cd68-4871-ae07-def01e1504ec" />
 
 
-🎬 Thêm phim mới (Admin)
-<img width="959" height="695" alt="image" src="https://github.com/user-attachments/assets/a0eff6c1-13cb-4cb7-8426-6158c97cbb07" />
+   👤 Quản lý vé đã đặt
+   <img width="967" height="649" alt="image" src="https://github.com/user-attachments/assets/b0114ffb-733e-4dff-9bfd-6ada2945ff91" />
+
+
+   🎬 Thêm phim mới (Admin)
+   <img width="959" height="695" alt="image" src="https://github.com/user-attachments/assets/a0eff6c1-13cb-4cb7-8426-6158c97cbb07" />
 
 4. Các bước cài đặt
-📋 Yêu cầu hệ thống
-Java JDK 8 hoặc cao hơn
-Windows/Linux/macOS
-🔧 Cài đặt và chạy ứng dụng
-Bước 1: Tải source code
-git clone [repository-url]
-cd movie-booking-system
-Bước 2: Tạo thư mục và file dữ liệu
-Tạo thư mục data và các file txt với nội dung mẫu:
-data/users.txt:
-admin,admin123,true
-user1,password123,false
-user2,password123,false
-data/movies.txt:
-1,Avengers: Endgame,The epic conclusion,12.5,1672531200000,CGV Vincom,100,100
-2,Spider-Man: No Way Home,Spider-Man seeks help,11.0,1672617600000,Lotte Cinema,80,80
-Bước 3: Biên dịch và chạy tự động
-# Chạy file batch (Windows)
-compile_and_run.bat
+   📋 Yêu cầu hệ thống
+   Java JDK 8 hoặc cao hơn
+   Windows/Linux/macOS
+   🔧 Cài đặt và chạy ứng dụng
+   Bước 1: Tải source code
+   git clone [repository-url]
+   cd movie-booking-system
+   Bước 2: Tạo thư mục và file dữ liệu
+   Tạo thư mục data và các file txt với nội dung mẫu:
+   data/users.txt:
+   admin,admin123,true
+   user1,password123,false
+   user2,password123,false
+   data/movies.txt:
+   1,Avengers: Endgame,The epic conclusion,12.5,1672531200000,CGV Vincom,100,100
+   2,Spider-Man: No Way Home,Spider-Man seeks help,11.0,1672617600000,Lotte Cinema,80,80
+   Bước 3: Biên dịch và chạy tự động
+   # Chạy file batch (Windows)
+   compile_and_run.bat
 
-# Hoặc chạy thủ công
-javac -d bin src/*/*.java src/*/*/*.java
-java -cp bin server.MovieServer
-# Mở terminal mới
-java -cp bin client.ClientGUI
-Bước 4: Đăng nhập
+   # Hoặc chạy thủ công
+   javac -d bin src/*/*.java src/*/*/*.java
+   java -cp bin server.MovieServer
+   # Mở terminal mới
+   java -cp bin client.ClientGUI
+   Bước 4: Đăng nhập
 
-Tài khoản admin: admin / admin123
+   Tài khoản admin: admin / admin123
 
-Hoặc đăng ký tài khoản mới
+   Hoặc đăng ký tài khoản mới
 
 5. Thông tin liên hệ
-👨‍💻 Tác giả
-NGUYEN DUC NGOC
-🎓 Student of [DNU University]
-📧 Email: ducngocnguyen004.email@example.com
-🔗 GitHub: ducngocnguyen004
-
-📞 Hỗ trợ kỹ thuật
-Nếu bạn gặp bất kỳ vấn đề nào với hệ thống, vui lòng:
-
-Kiểm tra lại các bước cài đặt
-
-Đảm bảo port 12345 không bị block
-
-Liên hệ qua email hoặc tạo issue trên GitHub
+   👨‍💻 Tác giả
+   NGUYEN DUC NGOC
+   🎓 Student of [DNU University]
+   📧 Email: ducngocnguyen004.email@example.com
+   🔗 GitHub: ducngocnguyen004
+   📞 Hỗ trợ kỹ thuật
+   Nếu bạn gặp bất kỳ vấn đề nào với hệ thống, vui lòng:
+   Kiểm tra lại các bước cài đặt
+   Đảm bảo port 12345 không bị block
+   Liên hệ qua email hoặc tạo issue trên GitHub
