@@ -155,13 +155,22 @@
 
 
 6. Thông tin liên hệ
-   👨‍💻 Tác giả
-   NGUYEN DUC NGOC
+
+   
+   👨‍💻 Tác giả: NGUYEN DUC NGOC
+
+   
    🎓 Student of [DNU University]
+
+
    📧 Email: ducngocnguyen004.email@example.com
+
+
    🔗 GitHub: ducngocnguyen004
+
+
+
    📞 Hỗ trợ kỹ thuật
-   Nếu bạn gặp bất kỳ vấn đề nào với hệ thống, vui lòng:
-   Kiểm tra lại các bước cài đặt
-   Đảm bảo port 12345 không bị block
-   Liên hệ qua email hoặc tạo issue trên GitHub
+
+
+   Nếu bạn gặp bất kỳ vấn đề nào với hệ thống, vui lòng: Kiểm tra lại các bước cài đặt ,đảm bảo port 12345 không bị block , liên hệ qua email hoặc tạo issue trên GitHub
