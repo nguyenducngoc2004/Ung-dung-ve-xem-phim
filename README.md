@@ -99,36 +99,57 @@
    <img width="959" height="695" alt="image" src="https://github.com/user-attachments/assets/a0eff6c1-13cb-4cb7-8426-6158c97cbb07" />
 
 4. Các bước cài đặt
-   📋 Yêu cầu hệ thống
-   Java JDK 8 hoặc cao hơn
-   Windows/Linux/macOS
-   🔧 Cài đặt và chạy ứng dụng
-   Bước 1: Tải source code
-   git clone [repository-url]
-   cd movie-booking-system
-   Bước 2: Tạo thư mục và file dữ liệu
-   Tạo thư mục data và các file txt với nội dung mẫu:
-   data/users.txt:
-   admin,admin123,true
-   user1,password123,false
-   user2,password123,false
-   data/movies.txt:
-   1,Avengers: Endgame,The epic conclusion,12.5,1672531200000,CGV Vincom,100,100
-   2,Spider-Man: No Way Home,Spider-Man seeks help,11.0,1672617600000,Lotte Cinema,80,80
-   Bước 3: Biên dịch và chạy tự động
-   # Chạy file batch (Windows)
-   compile_and_run.bat
+ 📋 Yêu cầu hệ thống
 
-   # Hoặc chạy thủ công
-   javac -d bin src/*/*.java src/*/*/*.java
-   java -cp bin server.MovieServer
-   # Mở terminal mới
-   java -cp bin client.ClientGUI
-   Bước 4: Đăng nhập
+ Java JDK 8 hoặc cao hơn
 
-   Tài khoản admin: admin / admin123
+ Windows / Linux / macOS
 
-   Hoặc đăng ký tài khoản mới
+ 🔧 Cài đặt và chạy ứng dụng
+
+ Bước 1: Tải source code
+ git clone <repository-url>
+ cd movie-booking-system
+
+
+ 
+ Bước 2: Tạo thư mục và file dữ liệu
+ mkdir data
+ Tạo file data/users.txt với nội dung mẫu:
+ admin,admin123,true
+ user1,password123,false
+ user2,password123,false
+ Tạo file data/movies.txt với nội dung mẫu:
+ 1,Avengers: Endgame,The epic conclusion,12.5,1672531200000,CGV Vincom,100,100
+ 2,Spider-Man: No Way Home,Spider-Man seeks help,11.0,1672617600000,Lotte Cinema,80,80
+
+
+
+ 
+ Bước 3: Biên dịch và chạy
+ 👉 Chạy bằng file batch (Windows):
+ compile_and_run.bat
+ 👉 Hoặc chạy thủ công:
+ # Biên dịch
+ javac -d bin src/*/*.java src/*/*/*.java
+
+
+ # Mở một terminal chạy server
+ java -cp bin server.MovieServer
+
+
+# Mở terminal khác chạy client GUI
+java -cp bin client.ClientGUI
+
+
+
+Bước 4: Đăng nhập
+
+Tài khoản admin mặc định: admin / admin123
+
+Hoặc bạn có thể đăng ký tài khoản mới trong giao diện client.
+
+
 
 5. Thông tin liên hệ
    👨‍💻 Tác giả
