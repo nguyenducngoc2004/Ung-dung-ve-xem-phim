@@ -1,11 +1,11 @@
 package server;
 
-import model.Movie;
-import model.Ticket;
-import model.User;
 import java.io.*;
 import java.net.Socket;
 import java.util.List;
+import model.Movie;
+import model.Ticket;
+import model.User;
 
 public class ClientHandler implements Runnable {
     private Socket socket;
@@ -25,7 +25,7 @@ public class ClientHandler implements Runnable {
         }
     }
 
-    @Override
+        @Override
     public void run() {
         try {
             while (true) {
@@ -42,6 +42,12 @@ public class ClientHandler implements Runnable {
                         break;
                     case "ADD_MOVIE":
                         handleAddMovie();
+                        break;
+                    case "UPDATE_MOVIE": // THÊM
+                        handleUpdateMovie();
+                        break;
+                    case "DELETE_MOVIE": // THÊM
+                        handleDeleteMovie();
                         break;
                     case "PURCHASE_TICKET":
                         handlePurchaseTicket();
@@ -125,6 +131,28 @@ public class ClientHandler implements Runnable {
         if (currentUser != null) {
             List<Ticket> tickets = server.getUserTickets(currentUser.getUsername());
             output.writeObject(tickets);
+        } else {
+            output.writeObject("UNAUTHORIZED");
+        }
+        output.flush();
+    }
+    private void handleUpdateMovie() throws IOException, ClassNotFoundException {
+        if (currentUser != null && currentUser.isAdmin()) {
+            int movieId = (Integer) input.readObject();
+            Movie updatedMovie = (Movie) input.readObject();
+            boolean success = server.updateMovie(movieId, updatedMovie);
+            output.writeObject(success ? "SUCCESS" : "FAILURE");
+        } else {
+            output.writeObject("UNAUTHORIZED");
+        }
+        output.flush();
+    }
+
+    private void handleDeleteMovie() throws IOException, ClassNotFoundException {
+        if (currentUser != null && currentUser.isAdmin()) {
+            int movieId = (Integer) input.readObject();
+            boolean success = server.deleteMovie(movieId);
+            output.writeObject(success ? "SUCCESS" : "FAILURE");
         } else {
             output.writeObject("UNAUTHORIZED");
         }

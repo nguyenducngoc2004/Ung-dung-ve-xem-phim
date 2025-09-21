@@ -1,17 +1,16 @@
 package client;
 
+import java.awt.*;
+import java.awt.event.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import model.Movie;
 import model.Ticket;
 import model.User;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
-import java.awt.event.*;
-import java.text.ParseException; // THÊM IMPORT NÀY
-import java.text.SimpleDateFormat;
-import java.util.Date; // THÊM IMPORT NÀY
-import java.util.List;
 
 public class ClientGUI extends JFrame {
     private MovieClient client;
@@ -29,6 +28,7 @@ public class ClientGUI extends JFrame {
     private JTextField registerUsernameField;
     private JPasswordField registerPasswordField;
     private JPasswordField registerConfirmPasswordField;
+
     
     // Movie Panel
     private JList<Movie> movieList;
@@ -51,7 +51,9 @@ public class ClientGUI extends JFrame {
     private JList<Ticket> ticketsList;
     private DefaultListModel<Ticket> ticketsListModel;
     private JButton backToMoviesButton;
-
+    // Thêm các thành phần cho quản lý phim
+    private JButton editMovieButton;
+    private JButton deleteMovieButton;
     public ClientGUI() {
         client = new MovieClient();
         initializeGUI();
@@ -89,27 +91,90 @@ public class ClientGUI extends JFrame {
     private void createLoginPanel() {
         JPanel loginPanel = new JPanel(new BorderLayout(10, 10));
         loginPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
+        loginPanel.setBackground(new Color(240, 240, 240));
 
-        JPanel formPanel = new JPanel(new GridLayout(3, 2, 10, 10));
-        
-        formPanel.add(new JLabel("Username:"));
-        loginUsernameField = new JTextField();
-        formPanel.add(loginUsernameField);
-        
-        formPanel.add(new JLabel("Password:"));
-        loginPasswordField = new JPasswordField();
-        formPanel.add(loginPasswordField);
-        
-        JButton loginButton = new JButton("Login");
-        JButton registerButton = new JButton("Register");
-        
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        buttonPanel.add(loginButton);
-        buttonPanel.add(registerButton);
+        // Panel chính chứa form
+        JPanel centerPanel = new JPanel(new BorderLayout());
+        centerPanel.setBackground(new Color(240, 240, 240));
+        centerPanel.setBorder(BorderFactory.createEmptyBorder(50, 0, 0, 0));
 
-        loginPanel.add(new JLabel("Login", JLabel.CENTER), BorderLayout.NORTH);
-        loginPanel.add(formPanel, BorderLayout.CENTER);
-        loginPanel.add(buttonPanel, BorderLayout.SOUTH);
+        // Tiêu đề
+        JLabel titleLabel = new JLabel("XENDRE", JLabel.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        titleLabel.setForeground(new Color(75, 0, 130)); // Màu tím đậm
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 30, 0));
+
+        JPanel formPanel = new JPanel(new GridBagLayout());
+        formPanel.setBackground(new Color(240, 240, 240));
+        formPanel.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        // Username
+        JLabel userLabel = new JLabel("USERNAME:");
+        userLabel.setFont(new Font("Arial", Font.BOLD, 12));
+        userLabel.setForeground(new Color(75, 0, 130));
+        gbc.gridx = 0; gbc.gridy = 0;
+        formPanel.add(userLabel, gbc);
+
+        loginUsernameField = new JTextField(20);
+        loginUsernameField.setPreferredSize(new Dimension(250, 35));
+        loginUsernameField.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(200, 200, 200)),
+            BorderFactory.createEmptyBorder(5, 10, 5, 10)
+        ));
+        gbc.gridx = 0; gbc.gridy = 1;
+        formPanel.add(loginUsernameField, gbc);
+
+        // Password
+        JLabel passLabel = new JLabel("PASSWORD:");
+        passLabel.setFont(new Font("Arial", Font.BOLD, 12));
+        passLabel.setForeground(new Color(75, 0, 130));
+        gbc.gridx = 0; gbc.gridy = 2;
+        formPanel.add(passLabel, gbc);
+
+        loginPasswordField = new JPasswordField(20);
+        loginPasswordField.setPreferredSize(new Dimension(250, 35));
+        loginPasswordField.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(200, 200, 200)),
+            BorderFactory.createEmptyBorder(5, 10, 5, 10)
+        ));
+        gbc.gridx = 0; gbc.gridy = 3;
+        formPanel.add(loginPasswordField, gbc);
+
+        // Nút Login
+        JButton loginButton = new JButton("LOGIN");
+        loginButton.setBackground(new Color(75, 0, 130));
+        loginButton.setForeground(Color.WHITE);
+        loginButton.setFont(new Font("Arial", Font.BOLD, 14));
+        loginButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        loginButton.setFocusPainted(false);
+        loginButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        gbc.gridx = 0; gbc.gridy = 4;
+        gbc.insets = new Insets(20, 10, 10, 10);
+        formPanel.add(loginButton, gbc);
+
+        // Nút Signup
+        JButton registerButton = new JButton("SIGNUP");
+        registerButton.setBackground(Color.WHITE);
+        registerButton.setForeground(new Color(75, 0, 130));
+        registerButton.setFont(new Font("Arial", Font.BOLD, 14));
+        registerButton.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(75, 0, 130)),
+            BorderFactory.createEmptyBorder(10, 20, 10, 20)
+        ));
+        registerButton.setFocusPainted(false);
+        registerButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        gbc.gridx = 0; gbc.gridy = 5;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        formPanel.add(registerButton, gbc);
+
+        centerPanel.add(titleLabel, BorderLayout.NORTH);
+        centerPanel.add(formPanel, BorderLayout.CENTER);
+
+        loginPanel.add(centerPanel, BorderLayout.CENTER);
 
         loginButton.addActionListener(e -> handleLogin());
         registerButton.addActionListener(e -> cardLayout.show(mainPanel, "Register"));
@@ -118,35 +183,109 @@ public class ClientGUI extends JFrame {
 
         mainPanel.add(loginPanel, "Login");
     }
-
-    private void createRegisterPanel() {
+     private void createRegisterPanel() {
         JPanel registerPanel = new JPanel(new BorderLayout(10, 10));
         registerPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
+        registerPanel.setBackground(new Color(240, 240, 240));
 
-        JPanel formPanel = new JPanel(new GridLayout(4, 2, 10, 10));
-        
-        formPanel.add(new JLabel("Username:"));
-        registerUsernameField = new JTextField();
-        formPanel.add(registerUsernameField);
-        
-        formPanel.add(new JLabel("Password:"));
-        registerPasswordField = new JPasswordField();
-        formPanel.add(registerPasswordField);
-        
-        formPanel.add(new JLabel("Confirm Password:"));
-        registerConfirmPasswordField = new JPasswordField();
-        formPanel.add(registerConfirmPasswordField);
-        
-        JButton registerButton = new JButton("Register");
-        JButton backButton = new JButton("Back to Login");
-        
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        buttonPanel.add(registerButton);
-        buttonPanel.add(backButton);
+        // Panel chính chứa form
+        JPanel centerPanel = new JPanel(new BorderLayout());
+        centerPanel.setBackground(new Color(240, 240, 240));
+        centerPanel.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
 
-        registerPanel.add(new JLabel("Register", JLabel.CENTER), BorderLayout.NORTH);
-        registerPanel.add(formPanel, BorderLayout.CENTER);
-        registerPanel.add(buttonPanel, BorderLayout.SOUTH);
+        // Tiêu đề
+        JLabel titleLabel = new JLabel("CREATE ACCOUNT", JLabel.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setForeground(new Color(75, 0, 130));
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
+
+        JPanel formPanel = new JPanel(new GridBagLayout());
+        formPanel.setBackground(new Color(240, 240, 240));
+        formPanel.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(8, 10, 8, 10);
+
+        // Username
+        JLabel userLabel = new JLabel("USERNAME:");
+        userLabel.setFont(new Font("Arial", Font.BOLD, 12));
+        userLabel.setForeground(new Color(75, 0, 130));
+        gbc.gridx = 0; gbc.gridy = 0;
+        formPanel.add(userLabel, gbc);
+
+        registerUsernameField = new JTextField(20);
+        registerUsernameField.setPreferredSize(new Dimension(250, 35));
+        registerUsernameField.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(200, 200, 200)),
+            BorderFactory.createEmptyBorder(5, 10, 5, 10)
+        ));
+        gbc.gridx = 0; gbc.gridy = 1;
+        formPanel.add(registerUsernameField, gbc);
+
+        // Password
+        JLabel passLabel = new JLabel("PASSWORD:");
+        passLabel.setFont(new Font("Arial", Font.BOLD, 12));
+        passLabel.setForeground(new Color(75, 0, 130));
+        gbc.gridx = 0; gbc.gridy = 2;
+        formPanel.add(passLabel, gbc);
+
+        registerPasswordField = new JPasswordField(20);
+        registerPasswordField.setPreferredSize(new Dimension(250, 35));
+        registerPasswordField.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(200, 200, 200)),
+            BorderFactory.createEmptyBorder(5, 10, 5, 10)
+        ));
+        gbc.gridx = 0; gbc.gridy = 3;
+        formPanel.add(registerPasswordField, gbc);
+
+        // Confirm Password
+        JLabel confirmPassLabel = new JLabel("CONFIRM PASSWORD:");
+        confirmPassLabel.setFont(new Font("Arial", Font.BOLD, 12));
+        confirmPassLabel.setForeground(new Color(75, 0, 130));
+        gbc.gridx = 0; gbc.gridy = 4;
+        formPanel.add(confirmPassLabel, gbc);
+
+        registerConfirmPasswordField = new JPasswordField(20);
+        registerConfirmPasswordField.setPreferredSize(new Dimension(250, 35));
+        registerConfirmPasswordField.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(200, 200, 200)),
+            BorderFactory.createEmptyBorder(5, 10, 5, 10)
+        ));
+        gbc.gridx = 0; gbc.gridy = 5;
+        formPanel.add(registerConfirmPasswordField, gbc);
+
+        // Nút Register
+        JButton registerButton = new JButton("SIGN UP");
+        registerButton.setBackground(new Color(75, 0, 130));
+        registerButton.setForeground(Color.WHITE);
+        registerButton.setFont(new Font("Arial", Font.BOLD, 14));
+        registerButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        registerButton.setFocusPainted(false);
+        registerButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        gbc.gridx = 0; gbc.gridy = 6;
+        gbc.insets = new Insets(20, 10, 10, 10);
+        formPanel.add(registerButton, gbc);
+
+        // Nút Back
+        JButton backButton = new JButton("BACK TO LOGIN");
+        backButton.setBackground(Color.WHITE);
+        backButton.setForeground(new Color(75, 0, 130));
+        backButton.setFont(new Font("Arial", Font.BOLD, 12));
+        backButton.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(75, 0, 130)),
+            BorderFactory.createEmptyBorder(8, 15, 8, 15)
+        ));
+        backButton.setFocusPainted(false);
+        backButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        gbc.gridx = 0; gbc.gridy = 7;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        formPanel.add(backButton, gbc);
+
+        centerPanel.add(titleLabel, BorderLayout.NORTH);
+        centerPanel.add(formPanel, BorderLayout.CENTER);
+
+        registerPanel.add(centerPanel, BorderLayout.CENTER);
 
         registerButton.addActionListener(e -> handleRegister());
         backButton.addActionListener(e -> cardLayout.show(mainPanel, "Login"));
@@ -154,7 +293,8 @@ public class ClientGUI extends JFrame {
         mainPanel.add(registerPanel, "Register");
     }
 
-    private void createMoviePanel() {
+
+       private void createMoviePanel() {
         JPanel moviePanel = new JPanel(new BorderLayout(10, 10));
         moviePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
@@ -192,6 +332,7 @@ public class ClientGUI extends JFrame {
                 Movie selectedMovie = movieList.getSelectedValue();
                 if (selectedMovie != null) {
                     movieDetailsArea.setText(createMovieDetails(selectedMovie));
+                    updateMovieButtons(selectedMovie);
                 }
             }
         });
@@ -201,12 +342,16 @@ public class ClientGUI extends JFrame {
         viewTicketsButton = new JButton("View My Tickets");
         logoutButton = new JButton("Logout");
         addMovieButton = new JButton("Add Movie");
+        editMovieButton = new JButton("Edit Movie");
+        deleteMovieButton = new JButton("Delete Movie");
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         buttonPanel.add(bookButton);
         buttonPanel.add(viewTicketsButton);
         buttonPanel.add(logoutButton);
         buttonPanel.add(addMovieButton);
+        buttonPanel.add(editMovieButton);
+        buttonPanel.add(deleteMovieButton);
 
         // Layout
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, listScrollPane, detailsScrollPane);
@@ -219,10 +364,57 @@ public class ClientGUI extends JFrame {
         viewTicketsButton.addActionListener(e -> showUserTickets());
         logoutButton.addActionListener(e -> handleLogout());
         addMovieButton.addActionListener(e -> cardLayout.show(mainPanel, "AddMovie"));
+        editMovieButton.addActionListener(e -> handleEditMovie());
+        deleteMovieButton.addActionListener(e -> handleDeleteMovie());
 
         mainPanel.add(moviePanel, "Movies");
     }
+     private void updateMovieButtons(Movie movie) {
+        boolean isAdmin = currentUser != null && currentUser.isAdmin();
+        boolean hasTickets = movie.getAvailableSeats() < movie.getTotalSeats();
+        
+        editMovieButton.setVisible(isAdmin);
+        deleteMovieButton.setVisible(isAdmin && !hasTickets); // Chỉ xóa được phim chưa có vé
+    }
 
+      private void handleEditMovie() {
+        Movie selectedMovie = movieList.getSelectedValue();
+        if (selectedMovie == null) {
+            JOptionPane.showMessageDialog(this, "Please select a movie to edit!");
+            return;
+        }
+      // Hiển thị dialog chỉnh sửa (có thể tạo panel riêng giống AddMovie)
+        JDialog editDialog = new JDialog(this, "Edit Movie", true);
+        editDialog.setSize(400, 500);
+        editDialog.setLocationRelativeTo(this);
+
+        // Tạo form chỉnh sửa tương tự AddMoviePanel
+        // [Code tạo form ở đây - giống AddMovie nhưng với giá trị hiện tại]
+
+        editDialog.setVisible(true);
+      }
+        private void handleDeleteMovie() {
+        Movie selectedMovie = movieList.getSelectedValue();
+        if (selectedMovie == null) {
+            JOptionPane.showMessageDialog(this, "Please select a movie to delete!");
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(this,
+            "Are you sure you want to delete '" + selectedMovie.getTitle() + "'?",
+            "Confirm Delete", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            String response = client.deleteMovie(selectedMovie.getId());
+            if ("SUCCESS".equals(response)) {
+                JOptionPane.showMessageDialog(this, "Movie deleted successfully!");
+                loadMovies();
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to delete movie!");
+            }
+        }
+    }
+     
     private void createAddMoviePanel() {
         JPanel addMoviePanel = new JPanel(new BorderLayout(10, 10));
         addMoviePanel.setBorder(new EmptyBorder(20, 20, 20, 20));
@@ -467,8 +659,13 @@ public class ClientGUI extends JFrame {
     }
 
     private void updateUIForUser() {
-        addMovieButton.setVisible(currentUser != null && currentUser.isAdmin());
+        boolean isAdmin = currentUser != null && currentUser.isAdmin();
+        addMovieButton.setVisible(isAdmin);
+        editMovieButton.setVisible(isAdmin);
+        deleteMovieButton.setVisible(isAdmin);
+        bookButton.setVisible(!isAdmin); // Admin không đặt vé
     }
+
 
     private String createMovieTooltip(Movie movie) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -507,18 +704,20 @@ public class ClientGUI extends JFrame {
 
     // Custom renderers
     class MovieListRenderer extends DefaultListCellRenderer {
-        @Override
-        public Component getListCellRendererComponent(JList<?> list, Object value, int index, 
-                                                    boolean isSelected, boolean cellHasFocus) {
-            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            if (value instanceof Movie) {
-                Movie movie = (Movie) value;
-                setText(String.format("%s ($%.2f) - %d seats available", 
-                        movie.getTitle(), movie.getPrice(), movie.getAvailableSeats()));
-            }
-            return this;
+    @Override
+    public Component getListCellRendererComponent(JList<?> list, Object value, int index, 
+                                                boolean isSelected, boolean cellHasFocus) {
+        super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        if (value instanceof Movie) {
+            Movie movie = (Movie) value;
+            // HIỂN THỊ ĐÚNG SỐ VÉ CÒN LẠI
+            setText(String.format("%s ($%.2f) - %d/%d seats available", 
+                    movie.getTitle(), movie.getPrice(), 
+                    movie.getAvailableSeats(), movie.getTotalSeats()));
         }
+        return this;
     }
+}
 
     class TicketListRenderer extends DefaultListCellRenderer {
         private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");

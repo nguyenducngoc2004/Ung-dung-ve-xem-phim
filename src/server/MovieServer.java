@@ -1,14 +1,14 @@
 package server;
 
-import model.Movie;
-import model.Ticket;
-import model.User;
-import utils.FileHandler;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import model.Movie;
+import model.Ticket;
+import model.User;
+import utils.FileHandler;
 
 
 public class MovieServer {
@@ -102,7 +102,32 @@ public class MovieServer {
                 .filter(t -> t.getUsername().equals(username))
                 .toList();
     }
+     public synchronized boolean updateMovie(int movieId, Movie updatedMovie) {
+        for (int i = 0; i < movies.size(); i++) {
+            if (movies.get(i).getId() == movieId) {
+                // Giữ nguyên số ghế available
+                int availableSeats = movies.get(i).getAvailableSeats();
+                updatedMovie.setAvailableSeats(availableSeats);
+                movies.set(i, updatedMovie);
+                saveData();
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public synchronized boolean deleteMovie(int movieId) {
+        // Xóa các vé liên quan đến phim này
+        tickets.removeIf(ticket -> ticket.getMovieId() == movieId);
+        
+        // Xóa phim
+        boolean removed = movies.removeIf(movie -> movie.getId() == movieId);
+        if (removed) {
+            saveData();
+        }
+        return removed;
+    }
+    
     public static void main(String[] args) {
         MovieServer server = new MovieServer();
         server.start();

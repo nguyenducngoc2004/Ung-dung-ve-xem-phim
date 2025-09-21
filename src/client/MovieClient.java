@@ -1,11 +1,11 @@
 package client;
 
-import model.Movie;
-import model.Ticket;
-import model.User;
 import java.io.*;
 import java.net.Socket;
 import java.util.List;
+import model.Movie;
+import model.Ticket;
+import model.User;
 
 public class MovieClient {
     private Socket socket;
@@ -50,6 +50,30 @@ public class MovieClient {
             output.writeObject(password);
             output.flush();
             
+            return (String) input.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return "FAILURE";
+        }
+    }
+    public String updateMovie(int movieId, Movie movie) {
+        try {
+            output.writeObject("UPDATE_MOVIE");
+            output.writeObject(movieId);
+            output.writeObject(movie);
+            output.flush();
+            return (String) input.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return "FAILURE";
+        }
+    }
+
+    public String deleteMovie(int movieId) {
+        try {
+            output.writeObject("DELETE_MOVIE");
+            output.writeObject(movieId);
+            output.flush();
             return (String) input.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
