@@ -18,7 +18,7 @@
 [![DaiNam University](https://img.shields.io/badge/DaiNam%20University-orange?style=for-the-badge)](https://dainam.edu.vn)
 </div>
 
-##1. Giới thiệu hệ thống
+## 1. Giới thiệu hệ thống
    Movie Ticket Booking System là hệ thống đặt vé xem phim trực tuyến được phát triển bằng Java, sử dụng mô hình client-server. Hệ thống cho phép người dùng xem danh sách phim, đặt vé, quản lý vé đã đặt, đồng thời cung cấp chức năng quản lý cho admin để thêm phim mới vào hệ thống.
 
    Tính năng chính:
@@ -45,7 +45,7 @@
    - Hỗ trợ đa người dùng
 
 
-##2. Công nghệ sử dụng
+## 2. Công nghệ sử dụng
    🛠️ Ngôn ngữ và Framework
 
 
@@ -94,7 +94,7 @@
    tickets.txt - Lịch sử đặt vé
 
 
-##3. Hình ảnh các chức năng
+## 3. Hình ảnh các chức năng
    
    
    🖼️ Giao diện đăng nhập
@@ -137,7 +137,7 @@
    <img src="Image/themphimadmin.png" alt="Ảnh 5" width="800"/>
    </p>
 
-##4. Các bước cài đặt
+## 4. Các bước cài đặt
 
 
    📋 Yêu cầu hệ thống
@@ -221,7 +221,7 @@
    Hoặc đăng ký tài khoản mới
 
 
-##5. Thông tin liên hệ
+## 5. Thông tin liên hệ
    
    
    👨‍💻 Tác giả
