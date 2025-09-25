@@ -5,7 +5,7 @@
 </h2>
 
 <h2 align="center">
-    UNG DUNG ĐAT VE XEM PHIM
+    UNG DUNG DAT VE XEM PHIM
 </h2>
 
 <div align="center">
